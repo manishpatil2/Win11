@@ -1,0 +1,21 @@
+name: Download Windows ISO via UUP
+
+on:
+  workflow_dispatch:
+
+jobs:
+  download_iso:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Make script executable
+      run: chmod +x uup_download_linux.sh
+
+    - name: Run UUP Dump script
+      run: ./uup_download_linux.sh
+
+    - name: List ISO
+      run: ls -lh *.iso
